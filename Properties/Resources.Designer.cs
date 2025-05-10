@@ -66,5 +66,47 @@ namespace ShoddyLauncher.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        internal static System.Drawing.Icon icon_box {
+            get {
+                object obj = ResourceManager.GetObject("icon_box", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon icon_dos {
+            get {
+                object obj = ResourceManager.GetObject("icon_dos", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon icon_doswin {
+            get {
+                object obj = ResourceManager.GetObject("icon_doswin", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon icon_invalidbox {
+            get {
+                object obj = ResourceManager.GetObject("icon_invalidbox", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon icon_openbox {
+            get {
+                object obj = ResourceManager.GetObject("icon_openbox", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon icon_win {
+            get {
+                object obj = ResourceManager.GetObject("icon_win", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }

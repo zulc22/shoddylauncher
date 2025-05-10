@@ -52,6 +52,9 @@
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>shoddy_smc.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -76,11 +79,20 @@
     <Compile Include="Indexer.Designer.cs">
       <DependentUpon>Indexer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Player.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Player.Designer.cs">
+      <DependentUpon>Player.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Indexer.resx">
       <DependentUpon>Indexer.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Player.resx">
+      <DependentUpon>Player.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -104,9 +116,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\7za.exe" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
@@ -125,6 +134,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\7z.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gwomp_0004.ico" />
+    <None Include="Resources\gwomp_0003.ico" />
+    <None Include="Resources\gwomp_0002.ico" />
+    <None Include="Resources\gwomp_0001.ico" />
+    <None Include="Resources\gwomp_0000.ico" />
+    <None Include="Resources\gwomp_0005.ico" />
+    <Content Include="shoddy_smc.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

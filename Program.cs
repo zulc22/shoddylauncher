@@ -15,7 +15,11 @@ namespace ShoddyLauncher
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Indexer());
+            Indexer i = new Indexer();
+            Application.Run(i);
+            if (i.archiveContents != null) {
+                Application.Run(new Player(i.archiveContents));
+            }
         }
     }
 }
