@@ -136,7 +136,13 @@
   <data name="icon_win" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gwomp_0001.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_7z_exe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="exe_7z" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\7z.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="exe_AutoHotkeyInterpreter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AutoHotkey.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ahk_vpcmountiso" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vpcmountiso.ahk;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

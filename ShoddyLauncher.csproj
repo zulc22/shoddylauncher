@@ -114,6 +114,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\vpcmountiso.ahk" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -142,6 +143,7 @@
     <None Include="Resources\gwomp_0001.ico" />
     <None Include="Resources\gwomp_0000.ico" />
     <None Include="Resources\gwomp_0005.ico" />
+    <None Include="Resources\AutoHotkey.exe" />
     <Content Include="shoddy_smc.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

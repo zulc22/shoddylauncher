@@ -86,7 +86,7 @@ namespace ShoddyLauncher
 
             Directory.SetCurrentDirectory(Path.GetTempPath());
             sevenz_path = Directory.GetCurrentDirectory() + @"\7z.exe";
-            File.WriteAllBytes(sevenz_path, ShoddyLauncher.Properties.Resources._7z_exe);
+            File.WriteAllBytes(sevenz_path, ShoddyLauncher.Properties.Resources.exe_7z);
 
             int count = ArchiveFiles.Count;
             int index = 0;

@@ -60,9 +60,23 @@ namespace ShoddyLauncher.Properties {
             }
         }
         
-        internal static byte[] _7z_exe {
+        internal static byte[] ahk_vpcmountiso {
             get {
-                object obj = ResourceManager.GetObject("_7z_exe", resourceCulture);
+                object obj = ResourceManager.GetObject("ahk_vpcmountiso", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        internal static byte[] exe_7z {
+            get {
+                object obj = ResourceManager.GetObject("exe_7z", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        internal static byte[] exe_AutoHotkeyInterpreter {
+            get {
+                object obj = ResourceManager.GetObject("exe_AutoHotkeyInterpreter", resourceCulture);
                 return ((byte[])(obj));
             }
         }
