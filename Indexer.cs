@@ -82,9 +82,9 @@ namespace ShoddyLauncher
         }
 
         private void SearchArchives() {
-            ProgressTxt("Extracting 7z...");
+            ProgressTxt("Creating 7z.exe...");
 
-            Directory.SetCurrentDirectory(Path.GetTempPath());
+            Directory.SetCurrentDirectory(DuctTape.TempDir());
             sevenz_path = Directory.GetCurrentDirectory() + @"\7z.exe";
             File.WriteAllBytes(sevenz_path, ShoddyLauncher.Properties.Resources.exe_7z);
 
@@ -175,7 +175,7 @@ namespace ShoddyLauncher
             _7z.StartInfo.WorkingDirectory = Directory.GetCurrentDirectory();
             // we drop the file into a special dir because we can't be sure what the filename will be
             // (-so redirection just... doesn't work. this is the only way to get binary data out)
-            string launcherTestDir = "ShoddyLauncherTest";
+            string launcherTestDir = DuctTape.TempDir() + @"\test";
             if (!Directory.Exists(launcherTestDir)) Directory.CreateDirectory(launcherTestDir);
             else
             {
@@ -187,7 +187,7 @@ namespace ShoddyLauncher
                     }
                 }
             }
-            _7z.StartInfo.Arguments = "e -oShoddyLauncherTest \"" + archive + "\" \"" + path + "\"";
+            _7z.StartInfo.Arguments = "e -o\"" + launcherTestDir + "\" \"" + archive + "\" \"" + path + "\"";
             _7z.StartInfo.UseShellExecute = false;
             _7z.StartInfo.CreateNoWindow = true;
             _7z.Start();

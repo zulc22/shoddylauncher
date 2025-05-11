@@ -73,6 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DuctTape.cs" />
     <Compile Include="Indexer.cs">
       <SubType>Form</SubType>
     </Compile>
