@@ -22,15 +22,15 @@ namespace ShoddyLauncher
         MixedDOSWindowsBinaries
     }
 
-    public partial class Indexer : Form
+    public partial class Setup : Form
     {
         List<string> ArchiveFiles;
         public ArchiveDescriptionTable archiveContents;
+        public string romFolder;
         bool Cancelled = false;
         Task SearchTask;
-        string sevenz_path = "";
 
-        public Indexer()
+        public Setup()
         {
             InitializeComponent();
             progressBar1.Maximum = 1000;
@@ -82,12 +82,10 @@ namespace ShoddyLauncher
         }
 
         private void SearchArchives() {
-            ProgressTxt("Creating 7z.exe...");
+            ProgressTxt("Copying out 7-Zip...");
 
-            Directory.SetCurrentDirectory(DuctTape.TempDir());
-            sevenz_path = Directory.GetCurrentDirectory() + @"\7z.exe";
-            File.WriteAllBytes(sevenz_path, ShoddyLauncher.Properties.Resources.exe_7z);
-
+            DuctTape.Extract7zBinaries();
+            
             int count = ArchiveFiles.Count;
             int index = 0;
             ProgressMax(count - 1);
@@ -98,41 +96,15 @@ namespace ShoddyLauncher
 
                 ProgressVal(index++);
                 ProgressTxt("Scanning '" + Path.GetFileName(filePath) + "'... (" + (count-index).ToString() + " remain)");
-                Process _7z = new Process();
-                _7z.StartInfo.FileName = sevenz_path;
-                _7z.StartInfo.Arguments = "l -bd \"" + filePath + "\"";
-                _7z.StartInfo.UseShellExecute = false;
-                _7z.StartInfo.RedirectStandardOutput = true;
-                _7z.StartInfo.CreateNoWindow = true;
-                _7z.Start();
-                string list_output = _7z.StandardOutput.ReadToEnd();
-                string[] lines = list_output.Split(new string[]{"\r\n"}, StringSplitOptions.None);
-                if (lines[3].EndsWith("Can not open file as archive"))
+                
+                List<string> filesInArchive = DuctTape.ListArchive(filePath);
+                if (filesInArchive == null)
                 {
                     archiveContentType = ArchiveContentDescriptor.InvalidArchive;
                     archiveContents.Add(filePath, archiveContentType);
                     continue;
                 }
-                // Collect file list from archive
-                int linesUntil = -1;
-                List<string> filesInArchive = new List<string>();
-                foreach (string line in lines)
-                {
-                    if (linesUntil > 0) linesUntil--;
-                    if (line.StartsWith("   Date"))
-                    {
-                        linesUntil = 2;
-                    }
-                    if (linesUntil != 0) continue;
-                    // The file list table has ended
-                    if (line.StartsWith("-------------------"))
-                    {
-                        break;
-                    }
-                    // File list table has started
-                    string filename = line.Substring(53);
-                    filesInArchive.Add(filename);
-                }
+
                 // Filter for files in archive that have executable file extensions
                 int dosExecutables = 0;
                 int windowsExecutables = 0;
@@ -164,14 +136,13 @@ namespace ShoddyLauncher
 
                 archiveContents.Add(filePath, archiveContentType);
             }
-            File.Delete(sevenz_path);
             Invoke(new Action(delegate { Close(); }));
         }
 
         private ArchiveContentDescriptor ScanExecutable(string archive, string path)
         {
             Process _7z = new Process();
-            _7z.StartInfo.FileName = sevenz_path;
+            _7z.StartInfo.FileName = DuctTape.SevenzPath();
             _7z.StartInfo.WorkingDirectory = Directory.GetCurrentDirectory();
             // we drop the file into a special dir because we can't be sure what the filename will be
             // (-so redirection just... doesn't work. this is the only way to get binary data out)
@@ -187,7 +158,8 @@ namespace ShoddyLauncher
                     }
                 }
             }
-            _7z.StartInfo.Arguments = "e -o\"" + launcherTestDir + "\" \"" + archive + "\" \"" + path + "\"";
+            _7z.StartInfo.Arguments = "e \"" + archive + "\" \"" + path + "\"";
+            _7z.StartInfo.WorkingDirectory = launcherTestDir;
             _7z.StartInfo.UseShellExecute = false;
             _7z.StartInfo.CreateNoWindow = true;
             _7z.Start();

@@ -56,6 +56,18 @@
     <ApplicationIcon>shoddy_smc.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DiscUtils.Core, Version=0.16.0.0, Culture=neutral, PublicKeyToken=5fa5b410cc9c6289, processorArchitecture=MSIL">
+      <HintPath>packages\DiscUtils.Core.0.16.13\lib\net40\DiscUtils.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DiscUtils.Iso9660, Version=0.16.0.0, Culture=neutral, PublicKeyToken=5fa5b410cc9c6289, processorArchitecture=MSIL">
+      <HintPath>packages\DiscUtils.Iso9660.0.16.13\lib\net40\DiscUtils.Iso9660.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DiscUtils.Streams, Version=0.16.0.0, Culture=neutral, PublicKeyToken=5fa5b410cc9c6289, processorArchitecture=MSIL">
+      <HintPath>packages\DiscUtils.Streams.0.16.13\lib\net40\DiscUtils.Streams.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -74,11 +86,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DuctTape.cs" />
-    <Compile Include="Indexer.cs">
+    <Compile Include="Setup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Indexer.Designer.cs">
-      <DependentUpon>Indexer.cs</DependentUpon>
+    <Compile Include="Setup.Designer.cs">
+      <DependentUpon>Setup.cs</DependentUpon>
     </Compile>
     <Compile Include="Player.cs">
       <SubType>Form</SubType>
@@ -88,8 +100,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Indexer.resx">
-      <DependentUpon>Indexer.cs</DependentUpon>
+    <EmbeddedResource Include="Setup.resx">
+      <DependentUpon>Setup.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Player.resx">
@@ -106,6 +118,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -145,6 +158,10 @@
     <None Include="Resources\gwomp_0000.ico" />
     <None Include="Resources\gwomp_0005.ico" />
     <None Include="Resources\AutoHotkey.exe" />
+    <None Include="Resources\7z.dll" />
+    <None Include="Resources\vpc16.png" />
+    <None Include="Resources\dosboxx16.png" />
+    <None Include="Resources\shell32.dll_14_3-1.png" />
     <Content Include="shoddy_smc.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

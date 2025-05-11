@@ -1,6 +1,6 @@
 ﻿namespace ShoddyLauncher
 {
-    partial class Indexer
+    partial class Setup
     {
         /// <summary>
         /// Required designer variable.

@@ -118,31 +118,43 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="dll_7z" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\7z.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="icon_box" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gwomp_0003.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_dos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gwomp_0000.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icon_doswin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gwomp_0002.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icon_invalidbox" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gwomp_0004.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icon_openbox" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gwomp_0005.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_win" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gwomp_0001.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="exe_7z" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\7z.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="vpc16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vpc16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="exe_AutoHotkeyInterpreter" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AutoHotkey.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="icon_win" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gwomp_0001.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_doswin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gwomp_0002.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ahk_vpcmountiso" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\vpcmountiso.ahk;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="exe_7z" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\7z.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="icon_openbox" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gwomp_0005.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dosboxx16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dosboxx16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shell32_dll_14_3_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shell32.dll_14_3-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

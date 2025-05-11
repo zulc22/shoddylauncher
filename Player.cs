@@ -59,5 +59,44 @@ namespace ShoddyLauncher
                 listView1.Items.Add(itm);
             }
         }
+
+        private void cbChangeROMExts_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (Control c in new Control[] { tbChangeExtFrom, tbChangeExtTo })
+                c.Enabled = cbChangeROMExts.Checked;
+        }
+
+        private void btnBrowseROMs_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog.ShowDialog() != System.Windows.Forms.DialogResult.Cancel)
+            {
+                cbChangeROMExts.Enabled = true; lbExtTo.Enabled = true;
+            }
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listView2.Enabled = false;
+            listView2.Items.Clear();
+            string path;
+            try
+            {
+                path = listView1.SelectedItems[0].SubItems[1].Text;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                return;
+            }
+            foreach (string s in DuctTape.ListArchive(path))
+            {
+                listView2.Items.Add(new ListViewItem(s));
+            }
+            listView2.Enabled = true;
+        }
+
+        private void btnVPC_Click(object sender, EventArgs e)
+        {
+            Enabled = false;
+        }
     }
 }
