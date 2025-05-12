@@ -23,14 +23,20 @@ public static class DuctTape
         return TempDir() + @"\7z.exe";
     }
 
-    public static List<string> ListArchive(string filePath)
+    public static Process NewSevenz()
     {
         Process _7z = new Process();
         _7z.StartInfo.FileName = SevenzPath();
-        _7z.StartInfo.Arguments = "l -bd \"" + filePath + "\"";
         _7z.StartInfo.UseShellExecute = false;
         _7z.StartInfo.RedirectStandardOutput = true;
         _7z.StartInfo.CreateNoWindow = true;
+        return _7z;
+    }
+
+    public static List<string> ListArchive(string filePath)
+    {
+        Process _7z = NewSevenz();
+        _7z.StartInfo.Arguments = "l -bd \"" + filePath + "\"";
         _7z.Start();
         string list_output = _7z.StandardOutput.ReadToEnd();
         string[] lines = list_output.Split(new string[] { "\r\n" }, StringSplitOptions.None);
@@ -59,5 +65,28 @@ public static class DuctTape
             filesInArchive.Add(filename);
         }
         return filesInArchive;
+    }
+
+    public static string AhkPath()
+    {
+        return TempDir() + @"\AutoHotkey.exe";
+    }
+
+    public static void ExtractAhkBinary()
+    {
+        File.WriteAllBytes(AhkPath(), ShoddyLauncher.Properties.Resources.exe_AutoHotkeyInterpreter);
+    }
+
+    public static void ExecuteAhk(byte[] script, string args="")
+    {
+        string ahkPath = AhkPath();
+        if (!File.Exists(ahkPath)) ExtractAhkBinary();
+        File.WriteAllBytes(TempDir() + @"\temp.ahk", script);
+        Process AhkInterpreter = new Process();
+        AhkInterpreter.StartInfo.WorkingDirectory = TempDir();
+        AhkInterpreter.StartInfo.FileName = ahkPath;
+        AhkInterpreter.StartInfo.Arguments = "temp.ahk "+args;
+        AhkInterpreter.Start();
+        AhkInterpreter.WaitForExit();
     }
 }

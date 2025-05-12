@@ -177,12 +177,22 @@ namespace ShoddyLauncher
             {
                 return ArchiveContentDescriptor.InvalidArchive;
             }
-            ushort relocTable = BitConverter.ToUInt16(exeBuffer, 0x18);
-            if (relocTable > 0x40)
+            ushort pe_header_pointer = BitConverter.ToUInt16(exeBuffer, 0x3c);
+            if (pe_header_pointer + 4 > exeBuffer.Length)
+            {
+                return ArchiveContentDescriptor.DOSBinaries;
+            }
+            if (exeBuffer[pe_header_pointer + 0] == 'P' &&
+                exeBuffer[pe_header_pointer + 1] == 'E' &&
+                exeBuffer[pe_header_pointer + 2] == 0 &&
+                exeBuffer[pe_header_pointer + 3] == 0)
             {
                 return ArchiveContentDescriptor.WindowsBinaries;
             }
-            else return ArchiveContentDescriptor.DOSBinaries;
+            else
+            {
+                return ArchiveContentDescriptor.DOSBinaries;
+            }
         }
     }
 }

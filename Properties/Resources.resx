@@ -157,4 +157,16 @@
   <data name="shell32_dll_14_3_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shell32.dll_14_3-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ahk_vpcunmountiso" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vpcmountiso1.ahk;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="autorun_copy_bat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\copy.bat;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="autorun_inf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\autorun.inf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="shoddy_smc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\shoddy_smc.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -73,6 +73,36 @@ namespace ShoddyLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] ahk_vpcunmountiso {
+            get {
+                object obj = ResourceManager.GetObject("ahk_vpcunmountiso", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] autorun_copy_bat {
+            get {
+                object obj = ResourceManager.GetObject("autorun_copy_bat", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] autorun_inf {
+            get {
+                object obj = ResourceManager.GetObject("autorun_inf", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] dll_7z {
             get {
                 object obj = ResourceManager.GetObject("dll_7z", resourceCulture);
@@ -177,6 +207,16 @@ namespace ShoddyLauncher.Properties {
             get {
                 object obj = ResourceManager.GetObject("shell32_dll_14_3_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon shoddy_smc {
+            get {
+                object obj = ResourceManager.GetObject("shoddy_smc", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
