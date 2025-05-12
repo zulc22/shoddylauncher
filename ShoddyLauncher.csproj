@@ -129,6 +129,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Resources\copy.bat" />
+    <None Include="Resources\COPY.PIF" />
     <None Include="Resources\vpcmountiso.ahk" />
     <None Include="Resources\vpcmountiso1.ahk" />
   </ItemGroup>

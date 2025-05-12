@@ -84,7 +84,7 @@ namespace ShoddyLauncher
             listView2.Items.Clear();
             string path = SelectedPath();
             if (path == null) return;
-
+            
             foreach (string s in DuctTape.ListArchive(path))
             {
                 listView2.Items.Add(new ListViewItem(s));
@@ -140,6 +140,7 @@ namespace ShoddyLauncher
             t.Start();
         }
 
+        // Get the file path thats currently selected on the listbox on the left
         private string SelectedPath(bool complain=false)
         {
             if (listView1.InvokeRequired)
@@ -180,7 +181,8 @@ namespace ShoddyLauncher
             cd.VolumeIdentifier = "SHODDY";
             cd.AddFile("autorun.inf", Properties.Resources.autorun_inf);
             cd.AddFile("copy.bat", Properties.Resources.autorun_copy_bat);
-            //cd.AddFile("shoddy.ico", );
+            cd.AddFile("copy.pif", Properties.Resources.autorun_copy_pif);
+            cd.AddFile("shoddy.ico", Properties.Resources.ico_shoddysmc);
 
             ProgressTxt("Extracting Archive...");
             if (Directory.Exists(DuctTape.TempDir() + @"\EMULATOR")) {
@@ -200,6 +202,33 @@ namespace ShoddyLauncher
                 string filePathInIso = file.Substring(preamulatorlength);
                 ProgressTxt(filePathInIso);
                 cd.AddFile(filePathInIso, File.ReadAllBytes(file));
+            }
+
+            string romsPath = folderBrowserDialog.SelectedPath;
+            if (romsPath != "" && Directory.Exists(romsPath)) {
+
+                string extFrom = tbChangeExtFrom.Text;
+                string extTo = tbChangeExtTo.Text;
+                if (extFrom.Length >= 1)
+                    if (extFrom[0] == '.') extFrom = extFrom.Substring(1);
+                if (extTo.Length >= 1)
+                    if (extTo[0] == '.') extTo = extTo.Substring(1);
+
+                foreach (string file in Directory.EnumerateFiles(
+                    romsPath,
+                "*.*", SearchOption.AllDirectories))
+                {
+                    string filePathInIso = "ROMS\\" + file.Substring(romsPath.Length+1);
+                    if (cbChangeROMExts.Checked)
+                    {
+                        int extensionIndex = filePathInIso.LastIndexOf('.');
+                        string extension = filePathInIso.Substring(extensionIndex + 1);
+                        if (extension == extFrom)
+                            filePathInIso = filePathInIso.Substring(0, extensionIndex) + "." + extTo;
+                    }
+                    ProgressTxt(filePathInIso);
+                    cd.AddFile(filePathInIso, File.ReadAllBytes(file));
+                }
             }
 
             string isoPath = Path.Combine(DuctTape.TempDir(), "vpc.iso");
@@ -228,7 +257,7 @@ namespace ShoddyLauncher
             }
             ProgressTxt("Mounting ISO...");
             DuctTape.ExecuteAhk(Properties.Resources.ahk_vpcmountiso, "\"" + isoPath + "\"");
-            ProgressTxt("Peter. The Status is here.");
+            ProgressTxt("Peter? The status is here.");
             UnlockUI();
         }
     }

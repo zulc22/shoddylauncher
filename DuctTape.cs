@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public static class DuctTape
 {
+    // Define temporary directory
     public static string TempDir()
     {
         string temp = Path.GetTempPath();
@@ -13,16 +14,19 @@ public static class DuctTape
         return temp;
     }
 
+    // Extract 7z.exe and 7z.dll out of the resources
     public static void Extract7zBinaries()
     {
         File.WriteAllBytes(SevenzPath(), ShoddyLauncher.Properties.Resources.exe_7z);
         File.WriteAllBytes(Path.Combine(SevenzPath(), @"..\7z.dll"), ShoddyLauncher.Properties.Resources.dll_7z);
     }
 
+    // Define where the 7z executable should be
     public static string SevenzPath() {
         return TempDir() + @"\7z.exe";
     }
 
+    // Helper function to create a 7z process ready for output capture
     public static Process NewSevenz()
     {
         Process _7z = new Process();
@@ -33,6 +37,7 @@ public static class DuctTape
         return _7z;
     }
 
+    // Return a list of the names of the files in an archive (Using 7z CLI)
     public static List<string> ListArchive(string filePath)
     {
         Process _7z = NewSevenz();
@@ -67,16 +72,19 @@ public static class DuctTape
         return filesInArchive;
     }
 
+    // Define where to place the AutoHotkey interpreter.
     public static string AhkPath()
     {
         return TempDir() + @"\AutoHotkey.exe";
     }
 
+    // Write the AutoHotkey interpreter to the temp directory.
     public static void ExtractAhkBinary()
     {
         File.WriteAllBytes(AhkPath(), ShoddyLauncher.Properties.Resources.exe_AutoHotkeyInterpreter);
     }
 
+    // Helper function to execute an AutoHotkey script.
     public static void ExecuteAhk(byte[] script, string args="")
     {
         string ahkPath = AhkPath();

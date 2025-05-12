@@ -35,15 +35,14 @@
             this.btnDOSBox = new System.Windows.Forms.Button();
             this.btnNative = new System.Windows.Forms.Button();
             this.listView2 = new System.Windows.Forms.ListView();
+            this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lbArchiveContents = new System.Windows.Forms.Label();
-            this.lbContentDescriptor = new System.Windows.Forms.Label();
             this.btnBrowseROMs = new System.Windows.Forms.Button();
             this.cbChangeROMExts = new System.Windows.Forms.CheckBox();
             this.tbChangeExtFrom = new System.Windows.Forms.TextBox();
             this.tbChangeExtTo = new System.Windows.Forms.TextBox();
             this.lbExtTo = new System.Windows.Forms.Label();
             this.lbStatus = new System.Windows.Forms.Label();
-            this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listView1
@@ -110,6 +109,11 @@
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
             // 
+            // name
+            // 
+            this.name.Text = "File Name";
+            this.name.Width = 299;
+            // 
             // lbArchiveContents
             // 
             this.lbArchiveContents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -119,16 +123,6 @@
             this.lbArchiveContents.Size = new System.Drawing.Size(91, 13);
             this.lbArchiveContents.TabIndex = 4;
             this.lbArchiveContents.Text = "Archive Contents:";
-            // 
-            // lbContentDescriptor
-            // 
-            this.lbContentDescriptor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbContentDescriptor.Location = new System.Drawing.Point(364, 13);
-            this.lbContentDescriptor.Name = "lbContentDescriptor";
-            this.lbContentDescriptor.Size = new System.Drawing.Size(153, 13);
-            this.lbContentDescriptor.TabIndex = 5;
-            this.lbContentDescriptor.Text = "No Executables Found";
-            this.lbContentDescriptor.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // btnBrowseROMs
             // 
@@ -186,11 +180,6 @@
             this.lbStatus.Text = "Peter? The status is here.";
             this.lbStatus.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
-            // name
-            // 
-            this.name.Text = "File Name";
-            this.name.Width = 299;
-            // 
             // Player
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,7 +191,6 @@
             this.Controls.Add(this.tbChangeExtFrom);
             this.Controls.Add(this.cbChangeROMExts);
             this.Controls.Add(this.btnBrowseROMs);
-            this.Controls.Add(this.lbContentDescriptor);
             this.Controls.Add(this.lbArchiveContents);
             this.Controls.Add(this.listView2);
             this.Controls.Add(this.btnNative);
@@ -226,7 +214,6 @@
         private System.Windows.Forms.Button btnNative;
         private System.Windows.Forms.ListView listView2;
         private System.Windows.Forms.Label lbArchiveContents;
-        private System.Windows.Forms.Label lbContentDescriptor;
         private System.Windows.Forms.Button btnBrowseROMs;
         private System.Windows.Forms.CheckBox cbChangeROMExts;
         private System.Windows.Forms.TextBox tbChangeExtFrom;
