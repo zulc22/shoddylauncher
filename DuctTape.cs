@@ -97,4 +97,23 @@ public static class DuctTape
         AhkInterpreter.Start();
         AhkInterpreter.WaitForExit();
     }
+
+    public static string DesktopPath()
+    {
+        return Path.Combine(Environment.GetEnvironmentVariable("USERPROFILE"), "Desktop");
+    }
+
+    public static string SystemDrive()
+    {
+        return Environment.GetEnvironmentVariable("SystemDrive");
+    }
+
+    public static string DOSBoxXPath()
+    {
+        return Path.Combine(SystemDrive(), "DOSBox-X");
+    }
+    public static string DOSBoxXExecutable()
+    {
+        return Path.Combine(SystemDrive(), @"DOSBox-X\dosbox-x.exe");
+    }
 }

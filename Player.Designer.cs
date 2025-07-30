@@ -84,6 +84,7 @@
             this.btnDOSBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDOSBox.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDOSBox.UseVisualStyleBackColor = true;
+            this.btnDOSBox.Click += new System.EventHandler(this.btnDOSBox_Click);
             // 
             // btnNative
             // 
@@ -96,6 +97,7 @@
             this.btnNative.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNative.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNative.UseVisualStyleBackColor = true;
+            this.btnNative.Click += new System.EventHandler(this.btnNative_Click);
             // 
             // listView2
             // 

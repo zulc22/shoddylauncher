@@ -260,5 +260,185 @@ namespace ShoddyLauncher
             ProgressTxt("Peter? The status is here.");
             UnlockUI();
         }
+
+        private void btnNative_Click(object sender, EventArgs e)
+        {
+            LockUI();
+            Task t = new Task(LaunchNative);
+            t.Start();
+        }
+
+        private void LaunchNative()
+        {
+            string p = SelectedPath(true);
+            if (p == null)
+            {
+                UnlockUI();
+                return;
+            }
+
+            string fromShoddyLauncher = Path.Combine(DuctTape.DesktopPath(), "From Shoddy Launcher");
+            while (true) // looped in case of errors
+            {
+                try
+                {
+                    if (Directory.Exists(fromShoddyLauncher)) {
+                        ProgressTxt("Deleting existing 'From ShoddyLauncher' directory...");
+                        Directory.Delete(fromShoddyLauncher, true);
+                    }
+                    break;
+                }
+                catch (Exception ex) {
+                    if (ex is IOException || ex is UnauthorizedAccessException)
+                    {
+                        MessageBox.Show("Can't delete the 'From ShoddyLauncher' directory\n" +
+                            "on the desktop. Close anything that might be\nusing it, and press OK to retry.",
+                            "ShoddyLauncher", MessageBoxButtons.OK, MessageBoxIcon.Error
+                        );
+                    }
+                    else throw;
+                }
+            }
+            Directory.CreateDirectory(fromShoddyLauncher);
+            ProgressTxt("Extracting Emulator...");
+
+            Process _7z = DuctTape.NewSevenz();
+            _7z.StartInfo.Arguments = "x -oEmulator \"" + p + "\"";
+            _7z.StartInfo.WorkingDirectory = fromShoddyLauncher;
+            _7z.Start();
+            _7z.WaitForExit();
+
+            string romTargetDir = Path.Combine(fromShoddyLauncher, "ROMs");
+
+            string romsPath = folderBrowserDialog.SelectedPath;
+            if (romsPath != "" && Directory.Exists(romsPath))
+            {
+                Directory.CreateDirectory(romTargetDir);
+
+                string extFrom = tbChangeExtFrom.Text;
+                string extTo = tbChangeExtTo.Text;
+                if (extFrom.Length >= 1)
+                    if (extFrom[0] == '.') extFrom = extFrom.Substring(1);
+                if (extTo.Length >= 1)
+                    if (extTo[0] == '.') extTo = extTo.Substring(1);
+
+                foreach (string file in Directory.EnumerateFiles(
+                    romsPath,
+                "*.*", SearchOption.AllDirectories))
+                {
+                    string targetFilePath = Path.Combine(romTargetDir, file.Substring(romsPath.Length + 1));
+                    if (cbChangeROMExts.Checked)
+                    {
+                        int extensionIndex = targetFilePath.LastIndexOf('.');
+                        string extension = targetFilePath.Substring(extensionIndex + 1);
+                        if (extension == extFrom)
+                            targetFilePath = targetFilePath.Substring(0, extensionIndex) + "." + extTo;
+                    }
+                    ProgressTxt(targetFilePath);
+                    File.Copy(file, targetFilePath);
+                }
+            }
+
+            ProgressTxt("Launching Explorer");
+            Process.Start(fromShoddyLauncher);
+
+            ProgressTxt("Peter? The status is here.");
+            UnlockUI();
+        }
+
+        private void btnDOSBox_Click(object sender, EventArgs e)
+        {
+            LockUI();
+            Task t = new Task(LaunchDOSBox);
+            t.Start();
+        }
+
+        private void LaunchDOSBox()
+        {
+            string p = SelectedPath(true);
+            if (p == null)
+            {
+                UnlockUI();
+                return;
+            }
+
+            string fromShoddyLauncher = Path.Combine(DuctTape.SystemDrive(), "SHODLNCH");
+            while (true) // looped in case of errors
+            {
+                try
+                {
+                    if (Directory.Exists(fromShoddyLauncher))
+                    {
+                        ProgressTxt("Deleting existing 'From ShoddyLauncher' directory...");
+                        Directory.Delete(fromShoddyLauncher, true);
+                    }
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    if (ex is IOException || ex is UnauthorizedAccessException)
+                    {
+                        MessageBox.Show("Can't delete the 'From ShoddyLauncher' directory\n" +
+                            "on the desktop. Close anything that might be\nusing it, and press OK to retry.",
+                            "ShoddyLauncher", MessageBoxButtons.OK, MessageBoxIcon.Error
+                        );
+                    }
+                    else throw;
+                }
+            }
+            Directory.CreateDirectory(fromShoddyLauncher);
+            ProgressTxt("Extracting Emulator...");
+
+            Process _7z = DuctTape.NewSevenz();
+            _7z.StartInfo.Arguments = "x -oEMU \"" + p + "\"";
+            _7z.StartInfo.WorkingDirectory = fromShoddyLauncher;
+            _7z.Start();
+            _7z.WaitForExit();
+
+            string romTargetDir = Path.Combine(fromShoddyLauncher, "ROMS");
+
+            string romsPath = folderBrowserDialog.SelectedPath;
+            if (romsPath != "" && Directory.Exists(romsPath))
+            {
+                Directory.CreateDirectory(romTargetDir);
+
+                string extFrom = tbChangeExtFrom.Text;
+                string extTo = tbChangeExtTo.Text;
+                if (extFrom.Length >= 1)
+                    if (extFrom[0] == '.') extFrom = extFrom.Substring(1);
+                if (extTo.Length >= 1)
+                    if (extTo[0] == '.') extTo = extTo.Substring(1);
+
+                foreach (string file in Directory.EnumerateFiles(
+                    romsPath,
+                "*.*", SearchOption.AllDirectories))
+                {
+                    string targetFilePath = Path.Combine(romTargetDir, file.Substring(romsPath.Length + 1));
+                    if (cbChangeROMExts.Checked)
+                    {
+                        int extensionIndex = targetFilePath.LastIndexOf('.');
+                        string extension = targetFilePath.Substring(extensionIndex + 1);
+                        if (extension == extFrom)
+                            targetFilePath = targetFilePath.Substring(0, extensionIndex) + "." + extTo;
+                    }
+                    ProgressTxt(targetFilePath);
+                    while (true) try
+                        {
+                            File.Copy(file, targetFilePath);
+                        }
+                        catch (Exception)
+                        {
+                            DialogResult r = MessageBox.Show("Couldn't copy file: \n" + file + "\nPress OK to retry, or Cancel to continue.", "ShoddyLauncher", MessageBoxButtons.OKCancel);
+                            if (r == DialogResult.Cancel) break;
+                        }
+                }
+            }
+
+            ProgressTxt("Launching DOSBox-X");
+            Process.Start(DuctTape.DOSBoxXExecutable(), "\"" + fromShoddyLauncher + "\"");
+
+            ProgressTxt("Peter? The status is here.");
+            UnlockUI();
+        }
     }
 }

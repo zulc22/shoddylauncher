@@ -68,6 +68,7 @@ namespace ShoddyLauncher
             else label1.Text = t;
         }
         private void ProgressMax(int max) {
+            if (max < 1) throw new ArgumentOutOfRangeException();
             if (progressBar1.InvokeRequired) {
                 Action a = delegate { ProgressMax(max); };
                 progressBar1.Invoke(a);
@@ -87,6 +88,13 @@ namespace ShoddyLauncher
             DuctTape.Extract7zBinaries();
             
             int count = ArchiveFiles.Count;
+            if (count == 0)
+            {
+                MessageBox.Show("Folder doesn't have any archives", "ShoddyLauncher", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Invoke(new Action(delegate { Close(); }));
+                return;
+            }
+
             int index = 0;
             ProgressMax(count - 1);
             archiveContents = new ArchiveDescriptionTable();
@@ -167,6 +175,7 @@ namespace ShoddyLauncher
             // find the first file in that dir
             if (Directory.GetFiles(launcherTestDir).Length == 0) return ArchiveContentDescriptor.InvalidArchive;
             string extractedfile = Directory.GetFiles(launcherTestDir)[0];
+            File.SetAttributes(extractedfile, FileAttributes.Normal); // clear read-only attr
 
             byte[] exeBuffer = File.ReadAllBytes(extractedfile);
             File.Delete(extractedfile);
